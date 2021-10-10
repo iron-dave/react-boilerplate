@@ -1,0 +1,87 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.1",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.2.0",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-redux": "^7.1.25",
+    "axios": "^1.4.0",
+    "cross-env": "^7.0.3",
+    "cross-var": "^1.1.0",
+    "lodash": "^4.17.21",
+    "npm-check-updates": "^16.10.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "react-redux-i18n": "^1.9.3",
+    "react-router-dom": "^6.11.2",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
+    "typescript": "^4.9.5"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.194",
+    "@types/react-fontawesome": "^1.6.5",
+    "@types/react-redux-i18n": "^0.0.13",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/redux-persist": "^4.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "eslint": "^7.11.0",
+    "eslint-plugin-react": "^7.32.2",
+    "node-sass": "^8.0.0",
+    "prettier": "2.8.8",
+    "redux-devtools-extension": "^2.13.9",
+    "shx": "^0.3.4"
+  },
+  "scripts": {
+    "rm-cfg": "shx rm -f .env .env*",
+    "rm-favicon": "shx rm -f public/favicon.ico",
+    "cp-glob-cfg": "shx cp src/configuration/configuration.cfg .env",
+    "cp-dev-cfg": "cross-var shx cp src/configuration/$npm_config_environment.cfg .env.development",
+    "cp-test-cfg": "cross-var shx cp src/configuration/$npm_config_environment.cfg .env.test",
+    "cp-prod-cfg": "cross-var shx cp src/configuration/$npm_config_environment.cfg .env.production",
+    "cp-skin-dev-cfg": "cross-var shx cp src/skins/$npm_config_skin/configuration.cfg .env.development.local || exit 0",
+    "cp-skin-test-cfg": "cross-var shx cp src/skins/$npm_config_skin/configuration.cfg .env.test.local || exit 0",
+    "cp-skin-prod-cfg": "cross-var shx cp src/skins/$npm_config_skin/configuration.cfg .env.production.local || exit 0",
+    "cp-skin-favicon": "cross-var npm run rm-favicon && shx cp src/skins/$npm_config_skin/assets/favicon.ico public/ || shx cp src/skins/demo/assets/favicon.ico public/",
+    "prestart": "npm run rm-cfg && npm run cp-glob-cfg && npm run cp-dev-cfg && npm run cp-skin-dev-cfg && npm run cp-skin-favicon",
+    "pretest": "npm run rm-cfg && npm run cp-glob-cfg && npm run cp-test-cfg && npm run cp-skin-test-cfg && npm run cp-skin-favicon",
+    "prebuild": "npm run rm-cfg && npm run cp-glob-cfg && npm run cp-prod-cfg && npm run cp-skin-prod-cfg && npm run cp-skin-favicon",
+    "start": "cross-env REACT_APP_SKIN_NAME=$npm_config_skin REACT_APP_ENVIRONMENT=$npm_config_environment react-scripts start",
+    "test": "cross-env REACT_APP_SKIN_NAME=$npm_config_skin REACT_APP_ENVIRONMENT=$npm_config_environment react-scripts test",
+    "build": "cross-env REACT_APP_SKIN_NAME=$npm_config_skin REACT_APP_ENVIRONMENT=$npm_config_environment react-scripts build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
